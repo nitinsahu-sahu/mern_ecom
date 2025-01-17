@@ -1,96 +1,218 @@
-import { Box, IconButton, TextField, Typography, useMediaQuery, useTheme } from '@mui/material'
-import { Stack } from '@mui/material'
-import React from 'react'
-import { QRCodePng, appStorePng, googlePlayPng ,facebookPng,instagramPng,twitterPng,linkedinPng} from '../../assets'
-import SendIcon from '@mui/icons-material/Send';
-import { MotionConfig, motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-
-
+import {
+  Box,
+  IconButton,
+  TextField,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+import { Stack } from "@mui/material";
+import React from "react";
+import {
+  QRCodePng,
+  appStorePng,
+  googlePlayPng,
+  facebookPng,
+  instagramPng,
+  twitterPng,
+  linkedinPng,
+} from "../../assets";
+import SendIcon from "@mui/icons-material/Send";
+import { MotionConfig, motion } from "framer-motion";
 
 export const Footer = () => {
+  const theme = useTheme();
+  const is700 = useMediaQuery(theme.breakpoints.down(700));
 
-    const theme=useTheme()
-    const is700=useMediaQuery(theme.breakpoints.down(700))
-
-    const labelStyles={
-        fontWeight:300,
-        cursor:'pointer'
-    }
+  const labelStyles = {
+    fontWeight: 300,
+    cursor: "pointer",
+  };
 
   return (
-    <Stack sx={{backgroundColor:theme.palette.primary.main,paddingTop:"3rem",paddingLeft:is700?"1rem":"3rem",paddingRight:is700?"1rem":"3rem",paddingBottom:"1.5rem",rowGap:"5rem",color:theme.palette.primary.light,justifyContent:"space-around"}}>
+    <Stack
+      sx={{
+        backgroundColor: "khaki",
+        color: theme.palette.text.primary,
+        padding: "3rem 1rem",
+        rowGap: "3rem",
+        justifyContent: "space-between",
+        alignItems: "center",
+      }}
+    >
+      {/* Upper Section */}
+      <Stack
+        flexDirection={{ xs: "column", md: "row" }}
+        justifyContent="space-around"
+        width="100%"
+        rowGap={"2rem"}
+        alignItems="flex-start"
+      >
+        <Stack rowGap={"1rem"}>
+          <Typography variant="h6" fontWeight="bold">
+            Account
+          </Typography>
+          <Typography variant="body2" sx={labelStyles}>
+            My Account
+          </Typography>
+          <Typography variant="body2" sx={labelStyles}>
+            Login / Register
+          </Typography>
+          <Typography variant="body2" sx={labelStyles}>
+            Cart
+          </Typography>
+          <Typography variant="body2" sx={labelStyles}>
+            Wishlist
+          </Typography>
+          <Typography variant="body2" sx={labelStyles}>
+            Shop
+          </Typography>
+        </Stack>
 
-            {/* upper */}
-            <Stack flexDirection={'row'} rowGap={'1rem'} justifyContent={is700?"":'space-around'} flexWrap={'wrap'}>
+        <Stack rowGap={"1rem"}>
+          <Typography variant="h6" fontWeight="bold">
+            Quick Links
+          </Typography>
+          <Typography variant="body2" sx={labelStyles}>
+            Privacy Policy
+          </Typography>
+          <Typography variant="body2" sx={labelStyles}>
+            Terms Of Use
+          </Typography>
+          <Typography variant="body2" sx={labelStyles}>
+            FAQ
+          </Typography>
+          <Typography variant="body2" sx={labelStyles}>
+            Contact
+          </Typography>
+        </Stack>
+        <Stack rowGap={"1rem"}>
+          <Typography variant="h6" fontWeight="bold">
+            Support
+          </Typography>
+          <Typography variant="body2" sx={labelStyles}>
+            302A Anand Bajar, INDORE, MP, INDIA.
+          </Typography>
+          <Typography variant="body2" sx={labelStyles}>
+            gbh@gmail.com
+          </Typography>
+          <Typography variant="body2" sx={labelStyles}>
+            +91 9876543210
+          </Typography>
+        </Stack>
+        <Stack rowGap={"1rem"}>
+          <Typography variant="h6" fontWeight="bold">
+            Exclusive
+          </Typography>
+          <Typography variant="body1">Subscribe</Typography>
+          <Typography variant="body2" sx={labelStyles}>
+            Get 10% off your first order
+          </Typography>
+          <TextField
+            placeholder="Enter your email"
+            variant="outlined"
+            size="small"
+            sx={{
+              borderRadius: "8px",
+              ".MuiOutlinedInput-root": {
+                backgroundColor: "#fff",
+              },
+            }}
+            InputProps={{
+              endAdornment: (
+                <IconButton>
+                  <SendIcon sx={{ color: theme.palette.primary.main }} />
+                </IconButton>
+              ),
+            }}
+          />
+        </Stack>
 
-                <Stack rowGap={'1rem'} padding={'1rem'}>
-                    <Typography variant='h6' fontSize={'1.5rem'}>Exclusive</Typography>
-                    <Typography variant='h6'>Subscribe</Typography>
-                    <Typography sx={labelStyles}>Get 10% off your first order</Typography>
-                    <TextField placeholder='Enter your email' sx={{border:'1px solid white',borderRadius:"6px"}} InputProps={{endAdornment:<IconButton><SendIcon sx={{color:theme.palette.primary.light}}/></IconButton>,style:{color:"whitesmoke"}}}/>
-                </Stack>
+        <Stack rowGap={"1rem"}>
+          <Typography variant="h6" fontWeight="bold">
+            Download App
+          </Typography>
+          <Typography variant="body2" sx={{ color: "gray", fontWeight: 500 }}>
+            Save $3 with App New User Only
+          </Typography>
+          <Stack flexDirection={"row"} gap={"0.5rem"}>
+            <Box
+              width={"80px"}
+              height={"80px"}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <img
+                src={QRCodePng}
+                style={{ maxWidth: "100%", objectFit: "contain" }}
+                alt="QR Code"
+              />
+            </Box>
 
-                <Stack rowGap={'1rem'} padding={'1rem'}>
-                    <Typography variant='h6'>Support</Typography>
-                    <Typography sx={labelStyles}>11th Main Street, Dhaka,  DH 1515, California.</Typography>
-                    <Typography sx={labelStyles}>exclusive@gmail.com</Typography>
-                    <Typography sx={labelStyles}>+88015-88888-9999</Typography>
-                </Stack>
-
-                <Stack rowGap={'1rem'} padding={'1rem'}>
-                    <Typography  variant='h6'>Account</Typography>
-                    <Typography sx={labelStyles}>My Account</Typography>
-                    <Typography sx={labelStyles}>Login / Register</Typography>
-                    <Typography sx={labelStyles}>Cart</Typography>
-                    <Typography sx={labelStyles}>Wishlist</Typography>
-                    <Typography sx={labelStyles}>Shop</Typography>
-                </Stack>
-
-                <Stack rowGap={'1rem'} padding={'1rem'}>
-                    <Typography  variant='h6'>Quick Links</Typography>
-                    <Typography sx={labelStyles}>Privacy Policy</Typography>
-                    <Typography sx={labelStyles}>Terms Of Use</Typography>
-                    <Typography sx={labelStyles}>FAQ</Typography>
-                    <Typography sx={labelStyles}>Contact</Typography>
-                </Stack>
-
-                <Stack rowGap={'1rem'} padding={'1rem'}>
-                    <Typography  variant='h6'>Download App</Typography>
-                    <Typography sx={{...labelStyles,color:"graytext",fontWeight:500}}>Save $3 with App New User Only</Typography>
-                    <Stack flexDirection={'row'} columnGap={'.5rem'}>
-
-                        <Box width={'100px'} height={"100px"}>
-                            <img src={QRCodePng} height={'100%'} width={'100%'} style={{objectFit:'contain'}} alt="QR Code"/>
-                        </Box>
-
-                        <Stack justifyContent={'space-around'}>
-                            <Stack>
-                                <img style={{width:"100%",height:"100%",cursor:"pointer"}} src={googlePlayPng} alt="GooglePlay" />
-                            </Stack>
-                            <Stack>
-                                <img style={{width:"100%",height:'100%',cursor:"pointer"}} src={appStorePng} alt="AppStore" />
-                            </Stack>
-                        </Stack>
-                    </Stack>
-
-                    <Stack mt={.6} flexDirection={'row'} columnGap={'2rem'}>
-                        <MotionConfig whileHover={{scale:1.1}} whileTap={{scale:1}}>
-                            <motion.img style={{cursor:"pointer"}} src={facebookPng} alt="Facebook" />
-                            <motion.img style={{cursor:"pointer"}} src={twitterPng} alt="Twitter" />
-                            <motion.img style={{cursor:"pointer"}} src={instagramPng} alt="Instagram" />
-                            <motion.img style={{cursor:"pointer"}} src={linkedinPng} alt="Linkedin" />
-                        </MotionConfig>
-                    </Stack>
-                </Stack>
-
+            <Stack justifyContent={"center"} gap={1}>
+              <img
+                style={{ width: "120px", cursor: "pointer" }}
+                src={googlePlayPng}
+                alt="GooglePlay"
+              />
+              <img
+                style={{ width: "120px", cursor: "pointer" }}
+                src={appStorePng}
+                alt="AppStore"
+              />
             </Stack>
+          </Stack>
 
-            {/* lower */}
-            <Stack alignSelf={"center"}>
-                <Typography color={'GrayText'}>&copy; Mern Store {new Date().getFullYear()}. All right reserved</Typography>
-            </Stack>
+          <Stack flexDirection={"row"} gap={"1rem"} mt={1}>
+            <motion.img
+              whileHover={{ scale: 1.1 }}
+              style={{
+                cursor: "pointer",
+                filter: "grayscale(100%) brightness(0) invert(0)",
+              }}
+              src={facebookPng}
+              alt="Facebook"
+            />
+            <motion.img
+              whileHover={{ scale: 1.1 }}
+              style={{
+                cursor: "pointer",
+                filter: "grayscale(100%) brightness(0) invert(0)",
+              }}
+              src={twitterPng}
+              alt="Twitter"
+            />
+            <motion.img
+              whileHover={{ scale: 1.1 }}
+              style={{
+                cursor: "pointer",
+                filter: "grayscale(100%) brightness(0) invert(0)",
+              }}
+              src={instagramPng}
+              alt="Instagram"
+            />
+            <motion.img
+              whileHover={{ scale: 1.1 }}
+              style={{
+                cursor: "pointer",
+                filter: "grayscale(100%) brightness(0) invert(0)",
+              }}
+              src={linkedinPng}
+              alt="LinkedIn"
+            />
+          </Stack>
+        </Stack>
+      </Stack>
 
+      {/* Lower Section */}
+      <Box textAlign="center" mt={4}>
+        <Typography variant="body2" color="GrayText">
+          &copy; Trends Craft {new Date().getFullYear()}. All rights reserved
+        </Typography>
+      </Box>
     </Stack>
-  )
-}
+  );
+};
